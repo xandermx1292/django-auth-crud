@@ -1,0 +1,99 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% if mascotas %}
+<div class="text-center">
+    <h1 style="text-align: left;">Lista de pedidos</h1>
+    <div class="row gx-10">
+        <div class="col-10">
+            <div class="p-10">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Especie</th>
+                            <th>Edad</th>
+                            <th>Estado</th>
+                            <th>-</th>
+                            <th>-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for emp in pedidos %}
+                        <tr>
+                            <td scope="row">{{ emp.id }}</td>
+                            <td>{{ emp.rut }}</td>
+                            <td>{{ emp.nombre }}</td>
+                            <td>{{ emp.apellido }}</td>
+                            <td>{{ emp.telefono }}</td>
+                            <td>{{ emp.email }}</td>
+                            <td>{{ emp.descripcion }}</td>
+                            <td><a class="btn btn-success btn-s" href="/editar/{{emp.id}}"><i class="bi bi-pencil"></i></a></td>
+                            <td><a class="btn btn-danger btn-s" href="/eliminar/{{emp.id}}"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="p-3">
+                <br>
+                <a class="btn btn-primary" href="/pedidos/crear/"> Agendar </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="text-center">
+    <p style="text-align: left;" class="fs-1">Lista de Pedidos</p>
+    <div class="row gx-10">
+        <div class="col-10">
+            <div class="p-10">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>R.U.T</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Descripcion</th>
+
+                            <th>-</th>
+                            <th>-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for emp in pedidos %}
+                        <tr>
+                            <td scope="row">{{ emp.id }}</td>
+                            <td>{{ emp.rut }}</td>
+                            <td>{{ emp.nombre }}</td>
+                            <td>{{ emp.apellido }}</td>
+                            <td>{{ emp.telefono }}</td>
+                            <td>{{ emp.email }}</td>
+                            <td>{{ emp.descripcion }}</td>
+                            <td><a class="btn btn-success btn-s" href="{% url 'detalle_pedidos' emp.id %}">Editar<i class="bi bi-pencil"></i></a></td>
+                            <td><a class="btn btn-danger btn-s" href="/eliminar/{{emp.id}}"><i class="bi bi-trash">Eliminar</i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="p-3">
+                <br>
+                <a class="btn btn-primary" href="/pedidos/crear/"> Agendar </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock  %}

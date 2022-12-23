@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{{error}}
+
+<div class="alert alert-success display-1 text-center">
+    <p class="text-center">Mi Pedido</p>
+</div>
+
+<form method="POST">
+    <div class="container px-4 text-align: left">
+        <p>{{titulo}} Pedido</p>
+        <div class="row gx-5">
+            <div class="col-10">
+                <div class="p-6">
+                    <table class="table">
+                        {{form.as_table}}
+                        {% csrf_token %}
+
+                    </table>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="p-6 text-center">
+                    <ul class="list-group">
+                        <li class="list-group"><p></p></li>
+                        <li class="list-group"><p></p></li>
+                        <li class="list-group"><input type="submit" class="btn btn-success" value="{{titulo}}"></li>
+                        <li class="list-group"><p></p></li>
+                        <li class="list-group"><p></p></li>
+                        <li class="list-group"><p></p></li>
+                        <li class="list-group"><p></p></li>
+                        <li class="list-group"><p></p></li>
+                        <li class="list-group"><a href="/pedidos" class="btn btn-danger">Volver</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock  %}

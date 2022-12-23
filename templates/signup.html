@@ -1,0 +1,30 @@
+ {% extends 'index.html' %}
+ 
+ {% block content %}
+<main class="container">
+
+   <div class="row gx-5">
+
+    <div class="col-md-4 offset-md-4">
+
+        <form method='POST'>
+
+            <table class="table">
+
+            {{error}}
+            {{form.as_table}}
+            {% csrf_token %}
+
+            </table>
+        
+            <Button class="btn btn-primary"> Registrar </Button>
+        
+        </form>
+        
+    </div>
+
+   </div>
+
+</main>
+    
+{% endblock  %}

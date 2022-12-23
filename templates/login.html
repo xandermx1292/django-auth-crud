@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<main class="container">
+    <form method='POST' class="card card-body">
+
+        <table class="table">
+
+        {{form.as_table}}
+        {% csrf_token %}
+        
+    </table>
+    <div>
+    <Button class="btn btn-primary"> Iniciar sesion </Button>
+    </div>    
+</form>
+</main>
+
+
+{% endblock %}
